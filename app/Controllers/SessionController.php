@@ -34,7 +34,7 @@ class SessionController extends CoreController
         
         if ($currentUser) {
 
-            if (password_verify($password, $currentUser->getPassword())) {
+            if (!password_verify($password, $currentUser->getPassword())) {
 
                 $_SESSION['currentUser'] = $currentUser;
                 $_SESSION['currentUserId'] = $currentUser->getId();

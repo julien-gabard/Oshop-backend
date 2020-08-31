@@ -167,7 +167,7 @@ class AppUser extends CoreModel {
      * @param int
      * @return App_user
      */
-    public function find($appUserId)
+    public static function find($appUserId)
     {
         $pdo = Database::getPDO();
 

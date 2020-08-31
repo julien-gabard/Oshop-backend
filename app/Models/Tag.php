@@ -71,7 +71,7 @@ class Tag extends CoreModel
      * 
      * @return Tag[]
      */
-    public function findTagByProduct($productId)
+    public static function findTagByProduct($productId)
     {
         $pdo = Database::getPDO();
 

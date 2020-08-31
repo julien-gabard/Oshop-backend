@@ -20,7 +20,7 @@ class ErrorController extends CoreController {
     /**
      * Méthode gérant les érreurs du formulaire catégorie
      */
-    public function categoryError($name, $subtitle, $picture)
+    public static function categoryError($name, $subtitle, $picture)
     {
         $errorList = [];
 
@@ -50,7 +50,7 @@ class ErrorController extends CoreController {
     /**
      * Méthode gérant les érreurs du formulaire du produit
      */
-    public function productError($name, $description, $picture, $price, $rate, $status, $category_id, $brand_id, $type_id)
+    public static function productError($name, $description, $picture, $price, $rate, $status, $category_id, $brand_id, $type_id)
     {
         $errorList = [];
 
@@ -98,7 +98,7 @@ class ErrorController extends CoreController {
     /**
      * Méthode gérant les erreurs du formulaire de création de compte
      */
-    public function createUserError($lastname, $firstname, $email, $password, $role, $status)
+    public static function createUserError($lastname, $firstname, $email, $password, $role, $status)
     {
         $errorList = [];
 
@@ -143,7 +143,7 @@ class ErrorController extends CoreController {
     /**
      * Méthode gérant les erreurs du formulaire de modification d'un utilisateur
      */
-    public function updateUserErr($firstname, $lastname, $email, $password, $role, $status)
+    public static function updateUserErr($firstname, $lastname, $email, $password, $role, $status)
     {
         $errorList = [];
 
@@ -193,7 +193,7 @@ class ErrorController extends CoreController {
     /**
      * Méthode gérant les erreurs du formulaire de connexion
      */
-    public function loginError($password, $email, $currentUser)
+    public static function loginError($password, $email, $currentUser)
     {
         $errorList = [];
 
