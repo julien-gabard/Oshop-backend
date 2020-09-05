@@ -18,6 +18,9 @@ $csrf = [
     'product-create-update',
     'product-delete',
 
+    'type-create-update',
+    'type-delete',
+
     'brand-create-update',
     'brand-delete',
 ];

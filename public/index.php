@@ -53,6 +53,8 @@ require '../app/config/routes/category.routes.php';
 
 require '../app/config/routes/product.routes.php';
 
+require '../app/config/routes/type.routes.php';
+
 require '../app/config/routes/brand.routes.php';
 
 require '../app/config/routes/session.routes.php';

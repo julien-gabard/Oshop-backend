@@ -17,7 +17,7 @@
                     <a class="nav-link" href="<?= $router->generate('product-list') ?>">Produits</a>
                 </li>
                 <li class="nav-item <?= $controllerName === 'type' ? 'active' : '' ?>">
-                    <a class="nav-link" href="#">Types</a>
+                    <a class="nav-link" href="<?= $router->generate('type-list') ?>">Types</a>
                 </li>
                 <li class="nav-item <?= $controllerName === 'brand' ? 'active' : '' ?>">
                     <a class="nav-link" href="<?= $router->generate('brand-list') ?>">Marques</a>
