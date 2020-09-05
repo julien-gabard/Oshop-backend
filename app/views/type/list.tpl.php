@@ -1,6 +1,14 @@
 <div class="container my-4">
 
-    <a href="#" class="btn btn-success float-right">Ajouter</a>
+    <?php if (!empty($errors)) : ?>
+        <div class="alert alert-danger">
+            <?php foreach ($errors as $currentError) : ?>
+                <div><?= $currentError ?></div>
+            <?php endforeach ?>
+        </div>
+    <?php endif ?>
+
+    <a href="<?= $router->generate('type-add') ?>" class="btn btn-success float-right">Ajouter</a>
     <h2>Liste des types</h2>
     <table class="table table-hover mt-4">
         <thead>

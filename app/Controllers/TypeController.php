@@ -16,6 +16,95 @@ class TypeController extends CoreController {
             'tokenCSRF' => $this->generateTokenCSRF(),
         ]);
     }
+
+    /**
+     * Méthode pour ajouter un type.
+     */
+    public function add()
+    {
+        $this->show('type/add-edit', [
+            'type' => new Type(),
+            'tokenCSRF' => $this->generateTokenCSRF(),
+        ]);
+    }
+
+    /**
+     * Méthode pour créer et modifier un type dans la BDD
+     */
+    public function createAndUpdate()
+    {
+        $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+        
+        $errorList = [];
+
+        if ($name === false) {
+            $errorList[] = 'Le nom est invalide.';
+        }
+        if (empty($name)) {
+            $errorList[] = 'Le nom ne doit pas être vide';
+        }
+
+        if (!empty($errorList)) {
+
+            $type = new Type();
+
+            $type->setName($_POST['name']);
+
+            $this->show('type/add-edit', [
+                'type' => $type,
+                'errors' => $errorList
+            ]);
+
+        } else {
+
+            if (empty($_POST['id'])) {
+
+                $type = new Type();
+
+                $type->setName($name);
+
+                $ok = $type->insert();
+
+                if ($ok) {
+                
+                    header("Location: /type/list");
+
+                } else {
+                
+                    $errorList[] = 'Le type n\'a pas été ajouter, veuillez réessayer.';
+                
+                    $this->show('type/add-edit', [
+                        'type' => $type,
+                        'errors' => $errorList
+                    ]);
+                }
+
+            } else {
+
+                $id = $_POST['id'];
+
+                $type = Type::find($id);
+
+                $type->setName($name);
+
+                $ok = $type->update();
+
+                if ($ok) {
+
+                    header("Location: /type/list");
+
+                } else {
+
+                    $errorList[] = 'Échec de la modification, veuillez réessayer.';
+
+                    $this->show('brand/add-edit', [
+                        'errors' => $errorList,
+                        'type' => $type,
+                    ]);
+                }
+            }
+        }
+    }
 }
 
 ?>

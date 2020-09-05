@@ -83,6 +83,54 @@ class Type extends CoreModel {
     }
 
     /**
+     * Méthode permettant d'ajouter un enregistrement dans la table type
+     * 
+     * @return bool
+     */
+    public function insert()
+    {
+        $pdo = Database::getPDO();
+
+        $sql = "
+            INSERT INTO `type` (name)
+            VALUES ('{$this->name}')
+        ";
+
+        $insertedRows = $pdo->exec($sql);
+
+        if ($insertedRows > 0) {
+            
+            $this->id = $pdo->lastInsertId();
+
+            return true;
+        }
+        
+        return false;
+    }
+
+    /**
+     * Méthode permettant de mettre à jour un enregistrement dans la table type
+     * 
+     * @return bool
+     */
+    public function update()
+    {
+        $pdo = Database::getPDO();
+
+        $sql = "
+            UPDATE `type`
+            SET
+                name = '{$this->name}',
+                updated_at = NOW()
+            WHERE id = {$this->id}
+        ";
+
+        $updatedRows = $pdo->exec($sql);
+
+        return ($updatedRows > 0);
+    }
+
+    /**
      * Get the value of name
      *
      * @return  string
