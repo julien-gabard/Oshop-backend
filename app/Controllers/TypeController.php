@@ -29,6 +29,24 @@ class TypeController extends CoreController {
     }
 
     /**
+     * Méthode pour éditer un type
+     */
+    public function edit($id)
+    {
+        $type = Type::find($id);
+
+        if (!$type) {
+            $this->show('error/err404');
+            return;
+        }
+
+        $this->show('type/add-edit', [
+            'type' => $type,
+            'tokenCSRF' => $this->generateTokenCSRF(),
+        ]);
+    }
+
+    /**
      * Méthode pour créer et modifier un type dans la BDD
      */
     public function createAndUpdate()

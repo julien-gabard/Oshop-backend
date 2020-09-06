@@ -25,10 +25,9 @@
                 <th scope="row"><?= $type->getId() ?></th>
                 <td><?= $type->getName() ?></td>
                 <td class="text-right">
-                    <a title="Modifier le type" href="#" class="btn btn-sm btn-warning">
+                    <a title="Modifier le type" href="<?= $router->generate('type-edit', ['id' => $type->getId()]) ?>" class="btn btn-sm btn-warning">
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </a>
-                    <!-- Example single danger button -->
                     <div class="btn-group">
                         <button type="button" title="Supprimer le type" class="btn btn-sm btn-danger dropdown-toggle"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
