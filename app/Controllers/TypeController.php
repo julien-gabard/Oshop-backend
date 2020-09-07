@@ -123,6 +123,32 @@ class TypeController extends CoreController {
             }
         }
     }
+
+    /**
+     * Méthode pour supprimer un type
+     */
+    public function delete($id)
+    {
+        $type = Type::find($id);
+
+        $ok = $type->delete();
+
+        if ($ok) {
+
+            header("Location: /type/list");
+
+        } else {
+
+            $errorList[] = 'La marque n\'a pas été supprimer';
+
+            $this->show('brand/list', [
+                'errors' => $errorList,
+                'types' => Type::findAll()
+            ]);
+
+        }
+
+    }
 }
 
 ?>

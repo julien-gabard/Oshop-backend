@@ -131,6 +131,26 @@ class Type extends CoreModel {
     }
 
     /**
+     * Méthode permettant de supprimer un type selon sont id
+     */
+    public function delete()
+    {
+        $pdo = Database::getPDO();
+
+        $sql = "DELETE FROM `type`
+                WHERE id = :id;
+                ALTER TABLE `type` AUTO_INCREMENT = 1";
+
+        $prepared = $pdo->prepare($sql);
+
+        $deleteRows = $prepared->execute([
+            ':id' => $this->id             
+        ]);
+
+        return ($deleteRows > 0);
+    }
+
+    /**
      * Get the value of name
      *
      * @return  string
