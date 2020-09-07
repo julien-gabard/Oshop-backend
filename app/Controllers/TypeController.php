@@ -85,7 +85,12 @@ class TypeController extends CoreController {
 
                 if ($ok) {
                 
-                    header("Location: /type/list");
+                    $success = 'Type ajouter';
+
+                    $this->show('type/list', [
+                        'success' => $success,
+                        'types' => Type::findAll()
+                    ]);
 
                 } else {
                 
@@ -109,7 +114,12 @@ class TypeController extends CoreController {
 
                 if ($ok) {
 
-                    header("Location: /type/list");
+                    $success = 'Type modifier';
+
+                    $this->show('type/list', [
+                        'success' => $success,
+                        'types' => Type::findAll()
+                    ]);
 
                 } else {
 
@@ -135,7 +145,12 @@ class TypeController extends CoreController {
 
         if ($ok) {
 
-            header("Location: /type/list");
+            $success = 'Le type a bien été supprimer';
+
+            $this->show('type/list', [
+                'success' => $success,
+                'types' => Type::findAll()
+            ]);
 
         } else {
 

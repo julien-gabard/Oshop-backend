@@ -8,6 +8,12 @@
         </div>
     <?php endif ?>
 
+    <?php if (!empty($success)) : ?>
+        <div class="alert alert-success">
+            <div><?= $success ?></div>
+        </div>
+    <?php endif ?>
+
     <a href="<?= $router->generate('type-add') ?>" class="btn btn-success float-right">Ajouter</a>
     <h2>Liste des types</h2>
     <table class="table table-hover mt-4">
