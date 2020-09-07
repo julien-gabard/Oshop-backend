@@ -17,6 +17,7 @@
         </div>
     <?php endif ?>
 
+    <a href="<?= $router->generate('product-homepage_selection') ?>"" class="btn btn-success float-right mx-3">Gestion Home Order</a>
     <a href="<?= $router->generate('product-add') ?>" class="btn btn-success float-right">Ajouter</a>
     <h2>Liste des produits</h2>
     <table class="table table-hover mt-4">

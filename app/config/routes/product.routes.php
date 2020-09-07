@@ -54,3 +54,14 @@ $router->map(
     ],
     'product-delete'
 );
+
+// Route pour gerer le home order des produits
+$router->map(
+    'GET|POST',
+    '/product/homepage-selection',
+    [
+        'method' => 'homepageSelection',
+        'controller' => '\App\Controllers\ProductController'
+    ],
+    'product-homepage_selection'
+);

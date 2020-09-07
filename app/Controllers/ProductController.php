@@ -209,4 +209,36 @@ class ProductController extends CrudController {
 
         }
     }
+
+    /**
+     * Méthode permettant de changer l'ordre des produits sur la page home.
+     */
+    public function homepageSelection()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $emplacement = filter_input(INPUT_POST, 'emplacement', FILTER_VALIDATE_INT, FILTER_REQUIRE_ARRAY);
+
+            $errorList = [];
+
+            if (in_array(false, $emplacement)) {
+                $errorList[] = 'Les données reçues ne sont pas correctes. Veuillez recommencer.';
+            }
+
+            // On vérfie ensuite qu'aucune erreur n'a été détectée
+            if (count($errorList) == 0) {
+                // Si on n'a pas d'erreur, alors on peut mettre à jour nos produits en base de données
+                Product::setHomeSelection($emplacement);
+                $_SESSION['flash'][] = 'Les produits mises en avant ont bien été mises à jour';
+            }
+            
+            global $router;
+            header('Location: '. $router->generate('product-homepage_selection'));
+        }
+
+        $this->show('product/homepageSelection', [
+            'tokenCSRF' => $this->generateTokenCSRF(),
+            'products' => Product::findAll(),
+        ]);
+    }
 }

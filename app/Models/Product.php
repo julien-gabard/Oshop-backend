@@ -194,13 +194,61 @@ class Product extends CoreModel {
     static public function findAllHomepage()
     {
         $pdo = Database::getPDO();
-        $sql = 'SELECT * 
-                FROM `product` 
-                LIMIT 5';
+        $sql = 'SELECT *
+                FROM product
+                WHERE home_order > 0
+                ORDER BY home_order
+                ASC';
         $pdoStatement = $pdo->query($sql);
         $results = $pdoStatement->fetchAll(PDO::FETCH_CLASS, 'App\Models\Product');
         
         return $results;
+    }
+
+    /**
+     * Change l'orde de l'emplacement des id(s)
+     */
+    static public function setHomeSelection($emplacement)
+    {
+        $pdo = Database::getPDO();
+
+        $sql = "UPDATE `product` SET home_order=:homeOrder";
+
+        $query = $pdo->prepare($sql);
+        $query->execute([':homeOrder' => 0]);
+
+        $sql = "
+            UPDATE `product` SET home_order = 1 WHERE id = :id1;
+            UPDATE `product` SET home_order = 2 WHERE id = :id2;
+            UPDATE `product` SET home_order = 3 WHERE id = :id3;
+            UPDATE `product` SET home_order = 4 WHERE id = :id4;
+            UPDATE `product` SET home_order = 5 WHERE id = :id5;
+        ";
+
+        $query = $pdo->prepare($sql);
+        $query->execute([
+            ':id1' => $emplacement[0],
+            ':id2' => $emplacement[1],
+            ':id3' => $emplacement[2],
+            ':id4' => $emplacement[3],
+            ':id5' => $emplacement[4],
+        ]);
+    }
+
+    /**
+     * Get the value of home_order
+     */ 
+    public function getHomeOrder()
+    {
+        return $this->home_order;
+    }
+
+    /**
+     * Set the value of home_order
+     */ 
+    public function setHomeOrder($home_order)
+    {
+        $this->home_order = $home_order;
     }
 
     /**

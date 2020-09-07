@@ -55,7 +55,7 @@ $router->map(
     'category-delete'
 );
 
-// .............
+// Route pour gerer le home order des catégories
 $router->map(
     'GET|POST',
     '/category/homepage-selection',
