@@ -8,6 +8,15 @@
         </div>
     <?php endif ?>
 
+    <?php if (!empty($success)) : ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <div><?= $success ?></div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif ?>
+
     <a href="<?= $router->generate('brand-add') ?>" class="btn btn-success float-right">Ajouter</a>
     <h2>Liste des marques</h2>
     <table class="table table-hover mt-4">
