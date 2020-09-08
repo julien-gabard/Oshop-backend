@@ -20,7 +20,7 @@
                             
                             <?php foreach($categoryHomePage as $category): ?>
                             <tr>
-                                <th scope="row"><?= $category->getId() ?></th>
+                                <th scope="row"><?= $placementCatégorie++ ?></th>
                                 <td><?= $category->getName() ?></td>
                                 <td class="text-right">
                                     <a href="<?= $router->generate('category-edit', ['id' => $category->getId()]) ?>" title="Modifier la catégorie" class="btn btn-sm btn-warning">
@@ -63,7 +63,7 @@
 
                             <?php foreach($productHomePage as $product): ?>
                             <tr>
-                                <th scope="row"><?= $placement++ ?></th>
+                                <th scope="row"><?= $placementProduct++ ?></th>
                                 <td><?= $product->getName() ?></td>
                                 <td class="text-right">
                                     <a href="<?= $router->generate('product-edit', ['id' => $product->getId()]) ?>" title="Modifier le produit" class="btn btn-sm btn-warning">

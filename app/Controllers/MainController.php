@@ -15,7 +15,8 @@ class MainController extends CoreController {
      */
     public function home()
     {
-        $placement = 1;
+        $placementCatégorie = 1;
+        $placementProduct = 1;
         // On appelle la méthode show() de l'objet courant
         // En argument, on fournit le fichier de Vue
         // Par convention, chaque fichier de vue sera dans un sous-dossier du nom du Controller
@@ -23,7 +24,8 @@ class MainController extends CoreController {
         $this->show('main/home', [
             'categoryHomePage' => Category::findAllHomepage(),
             'productHomePage' => Product::findAllHomepage(),
-            'placement' => $placement
+            'placementCatégorie' => $placementCatégorie,
+            'placementProduct' => $placementProduct
         ]);
     }
 }
