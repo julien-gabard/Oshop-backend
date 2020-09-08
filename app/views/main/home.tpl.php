@@ -63,7 +63,7 @@
 
                             <?php foreach($productHomePage as $product): ?>
                             <tr>
-                                <th scope="row"><?= $product->getId() ?></th>
+                                <th scope="row"><?= $placement++ ?></th>
                                 <td><?= $product->getName() ?></td>
                                 <td class="text-right">
                                     <a href="<?= $router->generate('product-edit', ['id' => $product->getId()]) ?>" title="Modifier le produit" class="btn btn-sm btn-warning">
