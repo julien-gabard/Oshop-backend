@@ -23,4 +23,7 @@ $csrf = [
 
     'brand-create-update',
     'brand-delete',
+
+    'tag-create-update',
+    'tag-delete',
 ];

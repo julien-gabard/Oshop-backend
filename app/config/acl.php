@@ -18,4 +18,5 @@ $acl = [
     'product-*'   => ['admin', 'catalog-manager', 'super-admin'],
     'type-*'      => ['admin', 'catalog-manager', 'super-admin'],
     'brand-*'     => ['admin', 'catalog-manager', 'super-admin'],
+    'tag-*'       => ['admin', 'catalog-manager', 'super-admin'],
 ];

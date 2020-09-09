@@ -57,6 +57,8 @@ require '../app/config/routes/type.routes.php';
 
 require '../app/config/routes/brand.routes.php';
 
+require '../app/config/routes/tag.routes.php';
+
 require '../app/config/routes/session.routes.php';
 
 require '../app/config/routes/app_user.routes.php';

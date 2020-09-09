@@ -23,7 +23,7 @@
                     <a class="nav-link" href="<?= $router->generate('brand-list') ?>">Marques</a>
                 </li>
                 <li class="nav-item <?= $controllerName === 'tag' ? 'active' : '' ?>">
-                    <a class="nav-link" href="#">Tags</a>
+                    <a class="nav-link" href="<?= $router->generate('tag-list') ?>">Tags</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
