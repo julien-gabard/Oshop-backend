@@ -154,9 +154,9 @@ class TypeController extends CoreController {
 
         } else {
 
-            $errorList[] = 'La marque n\'a pas été supprimer';
+            $errorList[] = 'Le type n\'a pas été supprimer';
 
-            $this->show('brand/list', [
+            $this->show('type/list', [
                 'errors' => $errorList,
                 'types' => Type::findAll()
             ]);
