@@ -229,7 +229,14 @@ class ProductController extends CrudController {
             if (count($errorList) == 0) {
                 // Si on n'a pas d'erreur, alors on peut mettre à jour nos produits en base de données
                 Product::setHomeSelection($emplacement);
-                $_SESSION['flash'][] = 'Les produits mises en avant ont bien été mises à jour';
+                
+                $success = 'Les produits mises en avant ont bien été mises à jour';
+
+                $this->show('product/homepageSelection', [
+                    'tokenCSRF' => $this->generateTokenCSRF(),
+                    'products' => Product::findAll(),
+                    'success' => $success
+                ]);
             }
             
             global $router;
