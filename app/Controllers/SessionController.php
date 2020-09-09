@@ -30,6 +30,12 @@ class SessionController extends CoreController
         // Renvoie false si pas trouvé ou renvoie une instance de app_user
         $currentUser = AppUser::findByEmail($email);
 
+        // Fix Expected type 'object' intellisense(1006) de $currentUser
+        if (empty($currentUser)) {
+            $currentUser = new AppUser();
+        }
+
+        // Je vérifie si il n'y a pas d'erreurs
         $errorList = ErrorController::loginError($password, $email, $currentUser);
         
         if ($currentUser) {
@@ -38,7 +44,6 @@ class SessionController extends CoreController
 
                 $_SESSION['currentUser'] = $currentUser;
                 $_SESSION['currentUserId'] = $currentUser->getId();
-
 
                 header("location: /");
     
